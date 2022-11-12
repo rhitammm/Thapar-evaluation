@@ -1,0 +1,52 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int satsun(int d, int m, int y)
+{
+ int t[] = {0,3,2,5,0,3,5,1,4,6,2,4};
+ y=y-(m<3);
+ return (y+y/4-y/100+y/400+t[m-1]+d)% 7;
+}
+int main()
+{
+	int d,m,y;
+	printf("ENter day\n month\n year\n");
+	scanf("%d%d%d",&d,&m,&y);
+	if(y%4==0)
+	{
+		if((m==2)&&(d>29))
+		printf("not a valid date");
+		else if((m==4)&&(d>30))
+		printf("not a valid date");
+		else if((m==6)&&(d>30))
+		printf("not a valid date");
+		else if((m==9)&&(d>30))
+		printf("not a valid date");
+		else if((m==11)&&(d>30))
+		printf("not a valid date");
+	}
+	else
+	{
+		if((m==2)&&(d>28))
+		printf("not a valid date");
+		else if((m==4)&&(d>30))
+		printf("not a valid date");
+		else if((m==6)&&(d>30))
+		printf("not a valid date");
+		else if((m==9)&&(d>30))
+		printf("not a valid date");
+		else if((m==11)&&(d>30))
+		printf("not a valid date");
+		else
+		{
+			int day = satsun(d, m, y);
+ if(day==6)
+ printf("Saturday\n");
+ else if(day==0)
+ printf("sunday\n");
+ else
+ printf("some other day");
+		}
+	}
+ return 0;
+}
